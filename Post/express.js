@@ -19,9 +19,6 @@ app.get('/adminPage', (req, res) => {
 });
 
 // API
-app.get('/style.css', (req, res) => {
-  res.sendFile(path.join(__dirname + "/view/style.css"));
-});
 app.get('/getStudent', (req, res) => {
     var response = {
         studentId: req.query.studentId,
