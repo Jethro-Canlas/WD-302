@@ -50,7 +50,7 @@ app.get('/getStudent', (req, res) => {
 })
 app.post('/postAdmin', urlEncoderParser, (req, res) => {
     var response = {
-        studentId: req.body.adminId,
+        adminId: req.body.adminId,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         department: req.body.department
@@ -62,14 +62,15 @@ app.post('/upload', (req, res) => {
     upload(req, res, (err) => {
         if (err) return res.statusCode(400).send('Error Uploading File');
         
-        var response = {
-        studentId: req.body.adminId,
+        const response = {
+        adminId: req.body.adminId,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         department: req.body.department
     }
         const uploadedFile = req.files['file'][0];
 
+        console.log(`Admin ID: ${response.adminId}\nFirst Name: ${response.firstName}\nLast Name: ${response.lastName}\nDepartment: ${response.department}`);
         console.log(`File path: ${uploadedFile.path}`)
 
         res.end(`File and form data uploaded successfully`);
